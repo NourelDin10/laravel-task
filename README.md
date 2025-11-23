@@ -57,3 +57,31 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Deployment Solution for the Task
+
+This repository includes the automated deployment setup for the Laravel backend task.
+
+### 1. Deployment Script (deploy.sh)
+- Location: `/var/www/laravel-task/deploy.sh`
+- Function:
+  1. Pulls latest changes from branch `12.x`
+  2. Installs dependencies via Composer
+  3. Runs database migrations
+  4. Clears Laravel caches (cache, config, route, view)
+  5. Logs all steps in `deploy.log`
+
+### 2. GitHub Actions Workflow
+- Path: `.github/workflows/deploy.yml`
+- Trigger: On push to branch `12.x`
+- Connects via SSH to server and executes `deploy.sh`
+- Requires secrets:
+  - `SERVER_IP`
+  - `SERVER_USER`
+  - `SERVER_SSH_KEY`
+
+### 3. CPU Monitoring Script (cpu-alert.sh)
+- Checks CPU usage every 5 minutes
+- Sends email alert if CPU > 50%
+- Cron job setup example:
+```bash
+*/5 * * * * /var/www/laravel-task/cpu-alert.sh
