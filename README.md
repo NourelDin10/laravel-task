@@ -85,3 +85,11 @@ This repository includes the automated deployment setup for the Laravel backend 
 - Cron job setup example:
 ```bash
 */5 * * * * /var/www/laravel-task/cpu-alert.sh
+```
+## Outputs
+
+### Deployment
+- See `deploy.log` for deployment results
+
+### CPU Monitoring
+- See `cpu-alert.log` for CPU usage and alerts
