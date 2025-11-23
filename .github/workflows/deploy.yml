@@ -3,7 +3,7 @@ name: Deploy Laravel App
 on:
   push:
     branches:
-      - main
+      - 12.x  
 
 jobs:
   deploy:
@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        ref: 12.x  
 
     - name: SSH & Run Deployment Script
       uses: appleboy/ssh-action@v0.1.6
