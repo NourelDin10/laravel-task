@@ -13,10 +13,7 @@ cd $APP_DIR || exit
 
   composer install --no-interaction --prefer-dist
   php artisan migrate --force
-  php artisan cache:clear
-  php artisan config:clear
-  php artisan route:clear
-  php artisan view:clear
+
 
   echo "Deployment completed at $(date)"
 } >> $LOG_FILE 2>&1
